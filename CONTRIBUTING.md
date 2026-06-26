@@ -18,9 +18,21 @@ SchemaFlow follows **Spec-Driven Development (SDD)**. Every feature starts with 
 
 ### Prerequisites
 
-- Node.js >= 18
-- pnpm >= 8.0.0 (install via `npm install -g pnpm`)
-- Git
+- **Node.js**: >= 22.0.0 (LTS recommended)
+- **pnpm**: >= 10.0.0
+- **Git**
+
+We recommend using [nvm](https://github.com/nvm-sh/nvm) to manage Node.js versions:
+
+```bash
+# Install and use Node.js 22
+nvm install 22
+nvm use 22
+
+# Enable corepack for pnpm
+corepack enable
+corepack prepare pnpm@10.14.0 --activate
+```
 
 ### Setup
 
