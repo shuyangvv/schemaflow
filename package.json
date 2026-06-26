@@ -1,0 +1,28 @@
+{
+  "name": "schemaflow",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Dynamic Form Schema Lifecycle Platform",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "dev:server": "pnpm --filter @schemaflow/server dev",
+    "dev:web": "pnpm --filter @schemaflow/web dev",
+    "build": "pnpm -r build",
+    "build:server": "pnpm --filter @schemaflow/server build",
+    "build:web": "pnpm --filter @schemaflow/web build",
+    "db:generate": "pnpm --filter @schemaflow/server db:generate",
+    "db:migrate": "pnpm --filter @schemaflow/server db:migrate",
+    "db:studio": "pnpm --filter @schemaflow/server db:studio",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "clean": "pnpm -r exec rm -rf node_modules dist .turbo && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.0"
+}

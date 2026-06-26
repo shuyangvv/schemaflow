@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Schema {
+  id               String   @id @default(uuid())
+  name             String   @unique
+  description      String?
+  currentVersionId String?  @unique
+  isPublished      Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  versions       Version[]
+  currentVersion Version?  @relation("CurrentVersion", fields: [currentVersionId], references: [id])
+
+  @@index([isPublished])
+}
+
+model Version {
+  id            String   @id @default(uuid())
+  schemaId      String
+  schema        Schema   @relation(fields: [schemaId], references: [id], onDelete: Cascade)
+
+  versionNumber Int
+  content       String
+  hash          String
+  changeSummary String?
+  createdBy     String?
+  createdAt     DateTime @default(now())
+
+  releases   Release[]
+  currentFor Schema?   @relation("CurrentVersion")
+
+  @@unique([schemaId, versionNumber])
+  @@index([schemaId, createdAt])
+}
+
+model Release {
+  id          String   @id @default(uuid())
+  versionId   String
+  version     Version  @relation(fields: [versionId], references: [id], onDelete: Cascade)
+
+  name        String
+  description String?
+  isActive    Boolean  @default(true)
+  releasedAt  DateTime @default(now())
+
+  @@unique([versionId, name])
+}
