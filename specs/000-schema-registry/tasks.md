@@ -10,10 +10,10 @@ Reference: [spec.md](./spec.md), [design.md](./design.md)
 Implement domain entities and value objects for Schema.
 
 ### Files to Create/Modify
-- `packages/server/src/domain/entities/Schema.ts`
-- `packages/server/src/domain/value-objects/SchemaName.ts`
-- `packages/server/src/domain/errors/DomainErrors.ts`
-- `packages/server/src/domain/repositories/SchemaRepository.ts`
+- `apps/server/src/modules/schema/schema.types.ts`
+- `apps/server/src/modules/schema/schema.validator.ts`
+- `apps/server/src/shared/errors.ts`
+- `apps/server/src/modules/schema/schema.repository.ts`
 
 ### Acceptance Criteria
 - [ ] `Schema` entity with invariants
@@ -32,8 +32,8 @@ Implement domain entities and value objects for Schema.
 Implement Prisma schema and repository.
 
 ### Files to Create/Modify
-- `packages/server/prisma/schema.prisma` - Add Schema model
-- `packages/server/src/infrastructure/persistence/PrismaSchemaRepository.ts`
+- `apps/server/prisma/schema.prisma` - Add Schema model
+- `apps/server/src/modules/schema/schema.repository.ts`
 - Migration file
 
 ### Acceptance Criteria
@@ -52,12 +52,8 @@ Implement Prisma schema and repository.
 Implement all use cases.
 
 ### Files to Create
-- `packages/server/src/application/use-cases/CreateSchemaUseCase.ts`
-- `packages/server/src/application/use-cases/GetSchemaUseCase.ts`
-- `packages/server/src/application/use-cases/ListSchemasUseCase.ts`
-- `packages/server/src/application/use-cases/UpdateSchemaUseCase.ts`
-- `packages/server/src/application/use-cases/DeleteSchemaUseCase.ts`
-- `packages/server/src/application/dto/SchemaDtos.ts`
+- `apps/server/src/modules/schema/schema.service.ts`
+- `apps/server/src/modules/schema/schema.types.ts`
 
 ### Acceptance Criteria
 - [ ] CreateSchema creates schema + v1 atomically
@@ -77,10 +73,10 @@ Implement all use cases.
 Implement HTTP controllers and routes.
 
 ### Files to Create
-- `packages/server/src/infrastructure/web/SchemaController.ts`
-- `packages/server/src/infrastructure/web/SchemaRoutes.ts`
-- `packages/server/src/infrastructure/web/middleware/errorHandler.ts`
-- `packages/server/src/infrastructure/web/middleware/validation.ts`
+- `apps/server/src/modules/schema/schema.controller.ts`
+- `apps/server/src/modules/schema/schema.routes.ts`
+- `apps/server/src/shared/middleware.ts`
+- `apps/server/src/modules/schema/schema.validator.ts`
 
 ### Acceptance Criteria
 - [ ] All 5 endpoints working
@@ -99,9 +95,8 @@ Implement HTTP controllers and routes.
 Implement schema list UI.
 
 ### Files to Create
-- `packages/web/src/application/hooks/useSchemas.ts`
-- `packages/web/src/presentation/pages/SchemaListPage.tsx`
-- `packages/web/src/presentation/components/SchemaCard.tsx`
+- `apps/web/src/modules/schemas/SchemaList.tsx`
+- `apps/web/src/shared/api/client.ts`
 
 ### Acceptance Criteria
 - [ ] Display list of schemas
@@ -120,10 +115,9 @@ Implement schema list UI.
 Implement create form and detail view.
 
 ### Files to Create
-- `packages/web/src/application/hooks/useCreateSchema.ts`
-- `packages/web/src/presentation/pages/SchemaCreatePage.tsx`
-- `packages/web/src/presentation/pages/SchemaDetailPage.tsx`
-- `packages/web/src/presentation/components/JsonEditor.tsx`
+- `apps/web/src/modules/schemas/SchemaCreate.tsx`
+- `apps/web/src/modules/schemas/SchemaDetail.tsx`
+- `apps/web/src/modules/schemas/SchemaEdit.tsx`
 
 ### Acceptance Criteria
 - [ ] Create form with validation
