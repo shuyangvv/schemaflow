@@ -1,0 +1,4 @@
+interface:
+  display_name: "SchemaFlow Spec Workflow"
+  short_description: "Codex-ready SchemaFlow SDD workflow"
+  default_prompt: "Use $schemaflow-spec-workflow to plan and implement a SchemaFlow feature from spec to review."
